@@ -79,8 +79,13 @@ function Car(model, milesPerGallon) {
   this.tank = 0;
   this.odometer = 0;
 }
+
 Car.prototype.fill = function(gallons) {
   this.tank = this.tank + gallons;
+};
+
+Car.prototype.drive = function(distance) {
+  this.odometer = distance;
 };
 
 /*
@@ -91,10 +96,14 @@ Car.prototype.fill = function(gallons) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  this.name = name;
-  this.age = age;
+  //   this.name = name;
+  //   this.age = age;
   this.favoriteToy = favoriteToy;
+  Person.call(this, name, age);
 }
+
+// Inherit the method on Person.prototype
+Baby.prototype = Object.create(Person.prototype);
 
 Baby.prototype.play = function() {
   return `Playing with ${this.favoriteToy}`;
